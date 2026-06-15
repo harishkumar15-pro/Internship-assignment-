@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NayePankh Foundation — Wings for Every Child</title>
+<meta name="description" content="NayePankh Foundation empowers underprivileged youth across India through education, skill development, and opportunity."/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--blue:#1a237e;--blue-light:#283593;--blue-dark:#0d1257;
+--orange:#ff6f00;--orange-light:#ff8f00;--orange-glow:rgba(255,111,0,0.18);
+--white:#ffffff;--off-white:#f8f9ff;--gray:#64748b;--gray-light:#e8eaf6;
+--text:#1e293b;--text-muted:#64748b;--card-bg:#ffffff;--nav-bg:rgba(26,35,126,0.97);
+--shadow:0 4px 32px rgba(26,35,126,0.10);--radius:16px;
+}
+[data-theme="dark"]{
+--off-white:#0f1123;--gray-light:#1e2347;--text:#e8eaf6;--text-muted:#94a3b8;
+--card-bg:#181d3a;--nav-bg:rgba(13,18,87,0.97);--white:#ffffff;
+--shadow:0 4px 32px rgba(0,0,0,0.4);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--off-white);color:var(--text);line-height:1.6;transition:background .3s,color .3s}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--nav-bg);backdrop-filter:blur(12px);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,0.18)}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo .logo-icon{width:38px;height:38px;background:var(--orange);border-radius:50%;display:grid;place-items:center;font-size:1.2rem}
+.nav-logo span{font-weight:700;font-size:1.1rem;color:#fff;letter-spacing:.3px}
+.nav-logo span em{color:var(--orange);font-style:normal}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{color:rgba(255,255,255,0.85);font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--orange)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn-donate{background:var(--orange);color:#fff;padding:9px 22px;border-radius:50px;font-weight:600;font-size:.85rem;transition:transform .2s,box-shadow .2s}
+.btn-donate:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,111,0,0.4)}
+.theme-btn{background:rgba(255,255,255,0.12);border:none;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1rem;display:grid;place-items:center;transition:background .2s}
+.theme-btn:hover{background:rgba(255,255,255,0.22)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.mobile-menu{display:none;position:fixed;top:68px;left:0;width:100%;background:var(--blue-dark);padding:1.5rem 5%;flex-direction:column;gap:1rem;z-index:999}
+.mobile-menu a{color:rgba(255,255,255,0.9);font-weight:500;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.mobile-menu.open{display:flex}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,var(--blue-dark) 0%,var(--blue) 50%,#1a3a8f 100%);display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,111,0,0.12) 0%,transparent 70%);animation:pulse 6s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,0.04) 0%,transparent 70%)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,111,0,0.15);border:1px solid rgba(255,111,0,0.3);color:var(--orange-light);padding:6px 16px;border-radius:50px;font-size:.8rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:1.2rem}
+.hero h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:1.2rem}
+.hero h1 .accent{color:var(--orange)}
+.hero p{color:rgba(255,255,255,0.75);font-size:1.05rem;max-width:500px;margin-bottom:2rem;line-height:1.75}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--orange);color:#fff;padding:13px 28px;border-radius:50px;font-weight:600;font-size:.92rem;transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(255,111,0,0.45)}
+.btn-outline{background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(255,255,255,0.3);padding:13px 28px;border-radius:50px;font-weight:500;font-size:.92rem;transition:.2s}
+.btn-outline:hover{background:rgba(255,255,255,0.15)}
+.hero-visual{position:relative}
+.hero-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:24px;padding:2rem;backdrop-filter:blur(8px);animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.2rem}
+.hero-stat{background:rgba(255,255,255,0.06);border-radius:14px;padding:1.2rem;text-align:center}
+.hero-stat .num{font-size:1.8rem;font-weight:800;color:var(--orange)}
+.hero-stat .lbl{font-size:.75rem;color:rgba(255,255,255,0.65);margin-top:2px}
+.hero-img-placeholder{width:100%;height:200px;background:linear-gradient(135deg,rgba(255,111,0,0.2),rgba(26,35,126,0.3));border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:1rem}
+.scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.5);font-size:.75rem}
+.scroll-dot{width:6px;height:6px;background:var(--orange);border-radius:50%;animation:bounce 1.5s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* SECTIONS */
+section{padding:90px 5%}
+.container{max-width:1200px;margin:0 auto}
+.section-tag{display:inline-block;background:var(--orange-glow);color:var(--orange);padding:5px 16px;border-radius:50px;font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;color:var(--text);line-height:1.2;margin-bottom:.8rem}
+.section-title .accent{color:var(--blue)}
+[data-theme="dark"] .section-title .accent{color:#7986cb}
+.section-sub{color:var(--text-muted);font-size:1rem;max-width:560px;line-height:1.75}
+.text-center{text-align:center}
+.text-center .section-sub{margin:0 auto}
+
+/* ABOUT */
+.about{background:var(--off-white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-img{background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:24px;height:400px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative}
+.about-img::after{content:'Since 2020';position:absolute;bottom:-16px;right:-16px;background:var(--orange);color:#fff;padding:10px 20px;border-radius:12px;font-weight:700;font-size:.85rem}
+.about-content{display:flex;flex-direction:column;gap:1.2rem}
+.about-content p{color:var(--text-muted);line-height:1.8}
+.about-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:.5rem}
+.pill{background:var(--gray-light);color:var(--blue);padding:6px 16px;border-radius:50px;font-size:.8rem;font-weight:600}
+[data-theme="dark"] .pill{color:#7986cb}
+
+/* MISSION */
+.mission{background:var(--blue-dark)}
+.mission .section-title{color:#fff}
+.mission .section-sub{color:rgba(255,255,255,0.65)}
+.mission .section-tag{background:rgba(255,111,0,0.2);color:var(--orange-light)}
+.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.mission-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:2rem;transition:transform .3s,border-color .3s}
+.mission-card:hover{transform:translateY(-6px);border-color:var(--orange)}
+.mission-icon{width:52px;height:52px;background:var(--orange-glow);border:1px solid rgba(255,111,0,0.3);border-radius:14px;display:grid;place-items:center;font-size:1.4rem;margin-bottom:1.2rem}
+.mission-card h3{color:#fff;font-weight:700;margin-bottom:.6rem}
+.mission-card p{color:rgba(255,255,255,0.6);font-size:.9rem;line-height:1.7}
+
+/* PROGRAMS */
+.programs{background:var(--off-white)}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.program-card{background:var(--card-bg);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);transition:transform .3s}
+.program-card:hover{transform:translateY(-6px)}
+.program-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.program-thumb.edu{background:linear-gradient(135deg,#1a237e,#3949ab)}
+.program-thumb.skill{background:linear-gradient(135deg,#bf360c,#ff6f00)}
+.program-thumb.health{background:linear-gradient(135deg,#1b5e20,#43a047)}
+.program-thumb.digital{background:linear-gradient(135deg,#4a148c,#7b1fa2)}
+.program-thumb.women{background:linear-gradient(135deg,#880e4f,#e91e63)}
+.program-thumb.env{background:linear-gradient(135deg,#006064,#00acc1)}
+.program-body{padding:1.5rem}
+.program-body h3{font-weight:700;margin-bottom:.5rem;color:var(--text)}
+.program-body p{color:var(--text-muted);font-size:.87rem;line-height:1.65}
+.program-tag{display:inline-block;background:var(--orange-glow);color:var(--orange);padding:3px 10px;border-radius:50px;font-size:.72rem;font-weight:600;margin-top:.8rem}
+
+/* IMPACT */
+.impact{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%)}
+.impact .section-title{color:#fff}
+.impact .section-tag{background:rgba(255,111,0,0.2);color:var(--orange-light)}
+.impact .section-sub{color:rgba(255,255,255,0.65)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+.stat-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:2rem 1.5rem;text-align:center;transition:transform .3s}
+.stat-card:hover{transform:translateY(-4px)}
+.stat-num{font-size:2.8rem;font-weight:800;color:var(--orange);line-height:1}
+.stat-suffix{font-size:1.5rem;font-weight:800;color:var(--orange)}
+.stat-label{color:rgba(255,255,255,0.65);font-size:.85rem;margin-top:.5rem}
+.stat-icon{font-size:1.8rem;margin-bottom:.8rem}
+
+/* VOLUNTEERS */
+.volunteers{background:var(--off-white)}
+.vol-cta-box{background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:24px;padding:3.5rem;text-align:center;color:#fff;position:relative;overflow:hidden}
+.vol-cta-box::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:rgba(255,111,0,0.15);border-radius:50%}
+.vol-cta-box h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:.8rem}
+.vol-cta-box p{color:rgba(255,255,255,0.75);max-width:500px;margin:0 auto 2rem}
+.vol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.vol-card{background:var(--card-bg);border-radius:16px;padding:1.5rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:1rem}
+.vol-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--orange));display:grid;place-items:center;font-size:1.3rem;flex-shrink:0}
+.vol-info h4{font-weight:600;font-size:.95rem;color:var(--text)}
+.vol-info p{color:var(--text-muted);font-size:.8rem}
+.vol-info span{color:var(--orange);font-size:.78rem;font-weight:600}
+
+/* GALLERY */
+.gallery{background:var(--gray-light)}
+[data-theme="dark"] .gallery{background:var(--gray-light)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:1rem;margin-top:3rem}
+.gallery-item{border-radius:16px;overflow:hidden;cursor:pointer;position:relative;background:var(--blue)}
+.gallery-item.wide{grid-column:span 2}
+.gallery-item.tall{grid-row:span 2}
+.gallery-thumb{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:3rem;transition:transform .4s}
+.gallery-item.wide .gallery-thumb{aspect-ratio:2/1}
+.gallery-item.tall .gallery-thumb{aspect-ratio:1/2}
+.gallery-item:hover .gallery-thumb{transform:scale(1.06)}
+.gallery-overlay{position:absolute;inset:0;background:rgba(26,35,126,0.6);opacity:0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:.9rem;transition:opacity .3s}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.g1{background:linear-gradient(135deg,#1a237e,#3949ab)}
+.g2{background:linear-gradient(135deg,#bf360c,#ff6f00)}
+.g3{background:linear-gradient(135deg,#1b5e20,#388e3c)}
+.g4{background:linear-gradient(135deg,#4a148c,#8e24aa)}
+.g5{background:linear-gradient(135deg,#006064,#00838f)}
+
+/* CONTACT */
+.contact{background:var(--off-white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-item{display:flex;align-items:flex-start;gap:1rem}
+.contact-icon{width:44px;height:44px;background:var(--orange-glow);border-radius:12px;display:grid;place-items:center;font-size:1.1rem;flex-shrink:0;color:var(--orange)}
+.contact-item h4{font-weight:600;font-size:.92rem;margin-bottom:.2rem;color:var(--text)}
+.contact-item p{color:var(--text-muted);font-size:.87rem}
+.contact-form{background:var(--card-bg);border-radius:20px;padding:2rem;box-shadow:var(--shadow)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem}
+.form-group label{font-size:.83rem;font-weight:600;color:var(--text)}
+.form-group input,.form-group textarea,.form-group select{background:var(--off-white);border:1.5px solid var(--gray-light);border-radius:10px;padding:11px 14px;font-family:'Poppins',sans-serif;font-size:.88rem;color:var(--text);transition:border-color .2s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--blue)}
+.form-group textarea{resize:vertical;min-height:110px}
+.btn-submit{background:var(--blue);color:#fff;width:100%;padding:13px;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.95rem;cursor:pointer;transition:.2s}
+.btn-submit:hover{background:var(--orange)}
+
+/* FOOTER */
+footer{background:var(--blue-dark);color:rgba(255,255,255,0.8);padding:60px 5% 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
+.footer-brand p{color:rgba(255,255,255,0.6);font-size:.87rem;margin:.8rem 0 1.2rem;line-height:1.7}
+.social-links{display:flex;gap:10px}
+.social-link{width:36px;height:36px;background:rgba(255,255,255,0.1);border-radius:50%;display:grid;place-items:center;font-size:.9rem;transition:background .2s;cursor:pointer}
+.social-link:hover{background:var(--orange)}
+.footer-col h4{color:#fff;font-weight:600;margin-bottom:1rem;font-size:.92rem}
+.footer-col ul{display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul li a{color:rgba(255,255,255,0.6);font-size:.85rem;transition:color .2s}
+.footer-col ul li a:hover{color:var(--orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-bottom p{font-size:.82rem;color:rgba(255,255,255,0.45)}
+.footer-bottom span{color:var(--orange)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:2000;display:none;place-items:center;padding:1rem}
+.modal-overlay.open{display:grid}
+.modal{background:var(--card-bg);border-radius:24px;padding:2.5rem;max-width:520px;width:100%;position:relative;animation:slideUp .3s ease}
+@keyframes slideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-close{position:absolute;top:16px;right:16px;background:var(--gray-light);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:grid;place-items:center;color:var(--text)}
+.modal h2{font-size:1.5rem;font-weight:800;color:var(--text);margin-bottom:.3rem}
+.modal p{color:var(--text-muted);font-size:.88rem;margin-bottom:1.5rem}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-30px);transition:opacity .6s ease,transform .6s ease}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+.nav-links{display:none}
+.hamburger{display:flex}
+.hero-grid{grid-template-columns:1fr}
+.hero-visual{display:none}
+.about-grid{grid-template-columns:1fr}
+.about-img{height:260px}
+.mission-grid,.programs-grid{grid-template-columns:1fr 1fr}
+.stats-grid{grid-template-columns:1fr 1fr}
+.vol-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr 1fr}
+.gallery-item.wide{grid-column:span 2}
+.gallery-item.tall{grid-row:span 1}
+.contact-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:580px){
+.mission-grid,.programs-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:1fr 1fr}
+.form-row{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:1fr}
+.gallery-item.wide{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="logo-icon">🕊️</div>
+    <span><em>NayePankh</em> Foundation</span>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#mission">Mission</a>
+    <a href="#programs">Programs</a>
+    <a href="#impact">Impact</a>
+    <a href="#volunteers">Volunteer</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">🌙</button>
+    <a href="#contact" class="btn-donate">Donate Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#mission" onclick="closeMobile()">Mission</a>
+  <a href="#programs" onclick="closeMobile()">Programs</a>
+  <a href="#impact" onclick="closeMobile()">Impact</a>
+  <a href="#volunteers" onclick="closeMobile()">Volunteer</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🇮🇳 Empowering India's Youth Since 2020</div>
+      <h1>Wings for Every <span class="accent">Child to Fly</span></h1>
+      <p>NayePankh Foundation bridges the gap between potential and opportunity — providing education, skills, and hope to underprivileged youth across India.</p>
+      <div class="hero-btns">
+        <a href="#programs" class="btn-primary">Explore Programs ↓</a>
+        <button class="btn-outline" onclick="document.getElementById('volunteerModal').classList.add('open')">Become a Volunteer</button>
+      </div>
+    </div>
+    <div class="hero-visual fade-right">
+      <div class="hero-card">
+        <div class="hero-img-placeholder">🎓</div>
+        <div style="color:#fff;font-weight:700;font-size:1rem;margin-bottom:.3rem">Changing Lives Daily</div>
+        <div style="color:rgba(255,255,255,0.6);font-size:.82rem">Every child deserves a chance to grow, learn, and lead.</div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num">15K+</div><div class="lbl">Students Supported</div></div>
+          <div class="hero-stat"><div class="num">120+</div><div class="lbl">Cities Reached</div></div>
+          <div class="hero-stat"><div class="num">500+</div><div class="lbl">Active Volunteers</div></div>
+          <div class="hero-stat"><div class="num">98%</div><div class="lbl">Success Rate</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span><div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img fade-left">🕊️</div>
+      <div class="about-content fade-right">
+        <div class="section-tag">Who We Are</div>
+        <h2 class="section-title">A Foundation Built on <span class="accent">Belief & Action</span></h2>
+        <p>NayePankh Foundation is a youth-led, non-profit organization working tirelessly to empower underprivileged children and young adults across India. Founded in 2020, we have grown from a small team of passionate volunteers into a nationwide movement.</p>
+        <p>Our name means "New Wings" — symbolizing our belief that every child, regardless of their background, deserves the opportunity to soar. We work directly in communities, schools, and digital spaces to deliver impactful, scalable programs.</p>
+        <div class="about-pills">
+          <span class="pill">🏫 Education</span>
+          <span class="pill">💼 Skill Development</span>
+          <span class="pill">🌿 Environment</span>
+          <span class="pill">💻 Digital Literacy</span>
+          <span class="pill">♀️ Women Empowerment</span>
+          <span class="pill">🏥 Health Awareness</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission" id="mission">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-tag">Our Purpose</div>
+      <h2 class="section-title" style="color:#fff">Mission, Vision & <span style="color:var(--orange)">Values</span></h2>
+      <p class="section-sub">We are driven by a singular belief: that opportunity should not be determined by the circumstances of one's birth.</p>
+    </div>
+    <div class="mission-grid">
+      <div class="mission-card fade-in">
+        <div class="mission-icon">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To provide quality education, vocational training, and mentorship to underprivileged youth — enabling them to lead independent, dignified, and impactful lives.</p>
+      </div>
+      <div class="mission-card fade-in">
+        <div class="mission-icon">🌟</div>
+        <h3>Our Vision</h3>
+        <p>An India where every child has equal access to education and opportunities — a nation where talent, not privilege, defines one's future.</p>
+      </div>
+      <div class="mission-card fade-in">
+        <div class="mission-icon">💎</div>
+        <h3>Our Values</h3>
+        <p>Integrity, empathy, inclusivity, and accountability guide everything we do. We believe in community-first solutions and transparent impact reporting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Our <span class="accent">Core Programs</span></h2>
+      <p class="section-sub">Six focused initiatives, each designed to address a critical barrier in the journey of underprivileged youth.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card fade-in">
+        <div class="program-thumb edu">📚</div>
+        <div class="program-body">
+          <h3>Shiksha Abhiyan</h3>
+          <p>Free tutoring, study materials, and mentorship for students from Class 1–12, focused on government school children in rural and urban slums.</p>
+          <span class="program-tag">Education</span>
+        </div>
+      </div>
+      <div class="program-card fade-in">
+        <div class="program-thumb skill">🔧</div>
+        <div class="program-body">
+          <h3>Kaushal Vikas</h3>
+          <p>Vocational training in tailoring, carpentry, mobile repair, and hospitality — equipping youth aged 16–25 with market-ready skills for employment.</p>
+          <span class="program-tag">Skill Development</span>
+        </div>
+      </div>
+      <div class="program-card fade-in">
+        <div class="program-thumb health">🏥</div>
+        <div class="program-body">
+          <h3>Swasth Bharat</h3>
+          <p>Community health camps, menstrual hygiene workshops, mental health awareness drives, and nutrition counseling reaching 200+ villages annually.</p>
+          <span class="program-tag">Health</span>
+        </div>
+      </div>
+      <div class="program-card fade-in">
+        <div class="program-thumb digital">💻</div>
+        <div class="program-body">
+          <h3>Digital Disha</h3>
+          <p>Computer literacy, internet safety, and coding bootcamps for first-generation tech learners, partnered with 30+ corporate CSR initiatives.</p>
+          <span class="program-tag">Digital Literacy</span>
+        </div>
+      </div>
+      <div class="program-card fade-in">
+        <div class="program-thumb women">♀️</div>
+        <div class="program-body">
+          <h3>Naari Shakti</h3>
+          <p>Leadership workshops, legal rights awareness, self-defense training, and entrepreneurship support for young women aged 14–30 across 15 states.</p>
+          <span class="program-tag">Women Empowerment</span>
+        </div>
+      </div>
+      <div class="program-card fade-in">
+        <div class="program-thumb env">🌿</div>
+        <div class="program-body">
+          <h3>Hariyali Mission</h3>
+          <p>Youth-led tree plantation drives, clean-up campaigns, and eco-clubs in schools — instilling environmental responsibility from a young age.</p>
+          <span class="program-tag">Environment</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact" id="impact">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-tag">Our Numbers</div>
+      <h2 class="section-title" style="color:#fff">Impact That <span style="color:var(--orange)">Speaks for Itself</span></h2>
+      <p class="section-sub">Every number represents a life touched, a future transformed, and a community uplifted.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card fade-in">
+        <div class="stat-icon">🎓</div>
+        <div><span class="stat-num" data-target="15000">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Students Supported</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-icon">🤝</div>
+        <div><span class="stat-num" data-target="500">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Active Volunteers</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-icon">🏙️</div>
+        <div><span class="stat-num" data-target="120">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Cities Covered</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-icon">🌱</div>
+        <div><span class="stat-num" data-target="50000">0</span><span class="stat-suffix">+</span></div>
+        <div class="stat-label">Trees Planted</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEERS -->
+<section class="volunteers" id="volunteers">
+  <div class="container">
+    <div class="vol-cta-box fade-in">
+      <h2>Join the NayePankh Movement</h2>
+      <p>Whether you have 2 hours a week or full-time dedication, your skills can change a child's life. We welcome educators, professionals, students, and anyone who cares.</p>
+      <button class="btn-primary" onclick="document.getElementById('volunteerModal').classList.add('open')" style="margin:0 auto">Register as Volunteer →</button>
+    </div>
+    <div class="vol-grid" style="margin-top:2.5rem">
+      <div class="vol-card fade-in">
+        <div class="vol-avatar">👩‍🏫</div>
+        <div class="vol-info">
+          <h4>Priya Sharma</h4>
+          <p>Teaching volunteer, Delhi</p>
+          <span>⭐ 200+ hours contributed</span>
+        </div>
+      </div>
+      <div class="vol-card fade-in">
+        <div class="vol-avatar">👨‍💻</div>
+        <div class="vol-info">
+          <h4>Rahul Verma</h4>
+          <p>Digital Literacy Trainer, Mumbai</p>
+          <span>⭐ 150+ hours contributed</span>
+        </div>
+      </div>
+      <div class="vol-card fade-in">
+        <div class="vol-avatar">👩‍⚕️</div>
+        <div class="vol-info">
+          <h4>Dr. Anita Patel</h4>
+          <p>Health Camp Coordinator, Jaipur</p>
+          <span>⭐ 300+ hours contributed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="text-center fade-in">
+      <div class="section-tag">Our Moments</div>
+      <h2 class="section-title">Stories in <span class="accent">Pictures</span></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item wide g1 fade-in">
+        <div class="gallery-thumb">🏫</div>
+        <div class="gallery-overlay">Shiksha Abhiyan — Delhi 2024</div>
+      </div>
+      <div class="gallery-item tall g2 fade-in">
+        <div class="gallery-thumb">🔧</div>
+        <div class="gallery-overlay">Kaushal Vikas Workshop</div>
+      </div>
+      <div class="gallery-item g3 fade-in">
+        <div class="gallery-thumb">🌿</div>
+        <div class="gallery-overlay">Hariyali Drive — 5000 Trees</div>
+      </div>
+      <div class="gallery-item g4 fade-in">
+        <div class="gallery-thumb">💻</div>
+        <div class="gallery-overlay">Digital Disha Bootcamp</div>
+      </div>
+      <div class="gallery-item g5 fade-in">
+        <div class="gallery-thumb">♀️</div>
+        <div class="gallery-overlay">Naari Shakti Workshop</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-tag">Get In Touch</div>
+      <h2 class="section-title">Let's Work <span class="accent">Together</span></h2>
+      <p class="section-sub">Have questions, partnership ideas, or want to contribute? We'd love to hear from you.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-left">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div><h4>Our Office</h4><p>New Delhi, India — with chapters in 15+ cities including Mumbai, Bangalore, Jaipur & Kolkata.</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div><h4>Email Us</h4><p>contact@nayepankh.org<br/>internship@nayepankh.org</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div><h4>Call Us</h4><p>+91 98XXX XXXXX<br/>Mon–Sat, 10am–6pm IST</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div><h4>Social Media</h4><p>@NayePankhFoundation on Instagram, LinkedIn & Twitter</p></div>
+        </div>
+      </div>
+      <div class="contact-form fade-right">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Arjun"/></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="arjun@email.com"/></div>
+        <div class="form-group">
+          <label>I want to</label>
+          <select>
+            <option>Volunteer with NayePankh</option>
+            <option>Make a Donation</option>
+            <option>Partner / Sponsor</option>
+            <option>Apply for Internship</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea placeholder="Tell us how you'd like to help or any questions you have..."></textarea></div>
+        <button class="btn-submit" onclick="handleSubmit(event)">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:.5rem">
+          <div class="logo-icon">🕊️</div>
+          <span><em>NayePankh</em> Foundation</span>
+        </div>
+        <p>Empowering underprivileged youth across India through education, skills, and opportunity. Every child deserves new wings to fly.</p>
+        <div class="social-links">
+          <div class="social-link">in</div>
+          <div class="social-link">tw</div>
+          <div class="social-link">ig</div>
+          <div class="social-link">yt</div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="#">Shiksha Abhiyan</a></li>
+          <li><a href="#">Kaushal Vikas</a></li>
+          <li><a href="#">Digital Disha</a></li>
+          <li><a href="#">Naari Shakti</a></li>
+          <li><a href="#">Hariyali Mission</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Organization</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Annual Reports</a></li>
+          <li><a href="#">Press & Media</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">Internships</a></li>
+          <li><a href="#">Corporate CSR</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 NayePankh Foundation. All rights reserved. | Registered NGO under Societies Act</p>
+      <p>Built with <span>♥</span> for India's children</p>
+    </div>
+  </div>
+</footer>
+
+<!-- VOLUNTEER MODAL -->
+<div class="modal-overlay" id="volunteerModal" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('volunteerModal').classList.remove('open')">✕</button>
+    <h2>Join as Volunteer 🕊️</h2>
+    <p>Fill in your details and our team will reach out within 48 hours.</p>
+    <div class="form-row">
+      <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your name"/></div>
+      <div class="form-group"><label>Age</label><input type="number" placeholder="e.g. 22"/></div>
+    </div>
+    <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"/></div>
+    <div class="form-group"><label>City</label><input type="text" placeholder="Delhi, Mumbai..."/></div>
+    <div class="form-group">
+      <label>Area of Interest</label>
+      <select>
+        <option>Teaching / Tutoring</option>
+        <option>Digital Literacy</option>
+        <option>Health Camps</option>
+        <option>Content Creation</option>
+        <option>Event Management</option>
+        <option>Fundraising</option>
+      </select>
+    </div>
+    <button class="btn-submit" onclick="handleVolunteer()">Submit Registration →</button>
+  </div>
+</div>
+
+<script>
+// THEME
+const themeBtn=document.getElementById('themeBtn');
+const html=document.documentElement;
+const saved=localStorage.getItem('np-theme')||'light';
+html.setAttribute('data-theme',saved);
+themeBtn.textContent=saved==='dark'?'☀️':'🌙';
+themeBtn.addEventListener('click',()=>{
+  const cur=html.getAttribute('data-theme');
+  const next=cur==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('np-theme',next);
+  themeBtn.textContent=next==='dark'?'☀️':'🌙';
+});
+
+// NAV SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// HAMBURGER
+const ham=document.getElementById('hamburger');
+const mob=document.getElementById('mobileMenu');
+ham.addEventListener('click',()=>mob.classList.toggle('open'));
+function closeMobile(){mob.classList.remove('open')}
+
+// SCROLL ANIMATIONS
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.12});
+document.querySelectorAll('.fade-in,.fade-left,.fade-right').forEach(el=>obs.observe(el));
+
+// COUNTER
+function animateCount(el){
+  const target=+el.getAttribute('data-target');
+  const dur=2000;
+  const step=target/(dur/16);
+  let cur=0;
+  const t=setInterval(()=>{
+    cur=Math.min(cur+step,target);
+    el.textContent=Math.floor(cur).toLocaleString('en-IN');
+    if(cur>=target)clearInterval(t);
+  },16);
+}
+const counterObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-target]').forEach(animateCount);
+      counterObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+const impactSec=document.getElementById('impact');
+if(impactSec)counterObs.observe(impactSec);
+
+// MODAL
+function closeModal(e){
+  if(e.target===e.currentTarget)document.getElementById('volunteerModal').classList.remove('open');
+}
+function handleVolunteer(){
+  alert('🎉 Thank you for joining NayePankh! Our team will contact you within 48 hours.');
+  document.getElementById('volunteerModal').classList.remove('open');
+}
+function handleSubmit(e){
+  e.preventDefault();
+  alert('✅ Message sent! We\'ll get back to you soon. Thank you for reaching out to NayePankh Foundation.');
+}
+</script>
+</body>
+</html>
